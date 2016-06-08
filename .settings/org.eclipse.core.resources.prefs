@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/fang/dao/mapper/SeckillMapper.xml=UTF-8
+encoding//src/main/java/com/fang/dao/mapper/SuccessKilledMapper.xml=UTF-8
+encoding//src/main/java/com/fang/dao/mapper/UserInfoMapper.xml=UTF-8
+encoding//src/main/webapp/WEB-INF/views/common/head.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/common/tag.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/seckill/detail.jsp=UTF-8
+encoding//web-config/business/sys.properties=UTF-8
+encoding//web-config/db.properties=UTF-8

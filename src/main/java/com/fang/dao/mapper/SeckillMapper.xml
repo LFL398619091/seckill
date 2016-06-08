@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.fang.dao.SeckillDao">
+    
+    <!--添加库存-->
+    <insert id="insertSeckill" parameterType="Seckill">
+		INSERT INTO seckill
+			(name,number,start_time,end_time,create_time )
+		VALUES
+			(#{name},#{number},#{startTime},#{endTime},#{createTime});
+	</insert>
+    
+    <!-- 减库存 -->
+    <update id="reduceNumberBySeckillId">
+		update
+			seckill 
+		set 
+			number = number - 1
+		where
+			seckill_id=#{seckillId}
+		and 
+			number > 0
+		and 
+			start_time <![CDATA[ <= ]]> #{killTime}
+		and 
+			end_time>=#{killTime}
+	</update>
+
+    <!-- 通过秒杀商品ID，查询秒杀商品详情 -->
+    <select id="querySeckillBySeckillId" resultType="Seckill" parameterType="long">
+		select 
+			seckill_id as seckillId,name,number,start_time as startTime,end_time as endTime,create_time as createTime
+		from 
+			seckill
+		where seckill_id = #{seckillId}
+	</select>
+
+    <!-- 获取所有的秒杀商品（带分页） -->
+    <select id="queryAllSeckills" resultType="Seckill">
+		select 
+			seckill_id as seckillId,name,number,start_time as startTime,end_time as endTime,create_time as createTime
+		from 
+			seckill
+		order by 
+			create_time desc
+		limit
+			#{offSet},#{limit}
+	</select>
+
+</mapper>
